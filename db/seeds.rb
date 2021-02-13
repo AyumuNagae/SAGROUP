@@ -1,6 +1,6 @@
 # ユーザー
-User.create!(name:  "Example User",
-    email: "example@railstutorial.org",
+User.create!(name:  "AdminUser",
+    email: "admin@railstutorial.org",
     password:              "foobar",
     password_confirmation: "foobar",
     admin:     true,
@@ -18,6 +18,14 @@ User.create!(name:  "Example User",
         activated: true,
         activated_at: Time.zone.now)
 end
+
+
+User.create!(name:  "GuestUser",
+  email: "guest-user@example.com",
+  password:              "foobar",
+  password_confirmation: "foobar",
+  activated: true,
+  activated_at: Time.zone.now)
 
 # マイクロポスト
 users = User.order(:created_at).take(6)
