@@ -1,5 +1,5 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<h1>ログイン</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -19,6 +19,9 @@
 
       <div class="mt-3"><%= f.submit "ログイン", class: "btn btn-primary block" %></div>
     <% end %>
+
+      <p>アカウントをお持ちでない方は<%= link_to "新規登録", signup_path,class:"default-link" %>をしてください</p>
+
 
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
       
