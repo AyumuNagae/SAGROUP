@@ -1,14 +1,15 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
+  <div class="container-fluid">
     <%= link_to root_path, id: "logo" do %>
-      <i class="fas fa-gamepad"></i>
+      <i class="fab fa-reddit-alien"></i>
       sagroup
     <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "最新の投稿", root_path, class:"orange-btn" %></li>
+        
         <li><%= link_to "", help_path, class:"orange-btn" %></li>
         <% if logged_in? %>
+          <li><%= link_to "最新の投稿", root_path, class:"orange-btn" %></li>
           <li><%= link_to "", users_path, class:"orange-btn" %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -24,6 +25,7 @@
             </ul>
           </li>
         <% else %>
+          <li><%= link_to "ホーム", root_path, class:"orange-btn" %></li>
           <li><%= link_to "新規登録", signup_path, class:"orange-btn" %></li>
           <li><%= link_to "ログイン", login_path,  class:"orange-btn" %></li>
         <% end %>
