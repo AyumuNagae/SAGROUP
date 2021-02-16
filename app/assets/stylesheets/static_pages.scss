@@ -1,13 +1,55 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.jumbotron{
-  color: white !important;
-  background-color: #3366CC !important;
-  opacity:0.8;
+.big-bg{
+  background-image:url(gameboy.jpg);
+  background-size:cover;
+  width:100vw;
+  height:100vh;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,-100px);
 }
-.image-one {
-background-image:url(gameboy.jpg);
-background-size:cover;
+
+.explain{
+  h1{
+    color:white;
+    padding:300px 0 30px 0;
+    font-family:Times New Roman;
+    margin-bottom:15px;
+    font-size: 70px;
+  }
+  p{
+    color:white;
+    font-size:15px;
+    font-family:serif;
+    margin:-3px;
+  }
+
+  .home-btn{
+    margin:30px 20px;
+    color: #FFF;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 45px;
+    width: 200px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, 0.5);
+    outline-offset: 0px;
+    text-shadow: none;
+    transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+    &:hover {
+      border-color: #FFF;
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+      outline-color: transparent;
+      outline-offset: 12px;
+      text-shadow: 2px 2px 3px #000;
+    }
+}
+  
 }
