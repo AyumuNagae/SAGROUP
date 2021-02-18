@@ -1,0 +1,15 @@
+<li id="comment-<%= comment.id %>">
+  <%= link_to gravatar_for(micropost.user, size: 50), comment.user %>
+  <span class="user"><%= link_to comment.user.name, micropost.user %></span>
+  <span class="content">
+    <p><%= comment.content %></p>
+    <%= image_tag comment.display_image if comment.image.attached? %>
+  </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    <% if current_user?(comment.user) %>
+      <%= link_to "削除する", micropost, method: :delete,
+                                       data: { confirm: "削除しますか" },class:"default-link" %>
+    <% end %>
+  </span>
+</li>

@@ -1,0 +1,28 @@
+<% provide(:title, @micropost.title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <div class="brand">
+      <div class="content">
+          <%= image_tag @micropost.image if @micropost.image.attached? %>
+          <ul>
+            <li  class="micropost-title">タイトル:<%= @micropost.title %></li>
+            <li  class="micropost-category">カテゴリ-<%= @micropost.game_category %></li>
+            <li class="brand-explain"><%= @micropost.content %></li>
+            <section class="comment_form">
+             <%= render 'shared/comment_form' %>
+            </section>
+          </ul>
+      </div>
+    </div>
+  </aside>
+   <div class="col-md-8">
+    <% if @micropost.comments.any? %>
+      <h3>コメント(<%= @micropost.comments.count %>件)</h3>
+      <ol class="comments">
+        <%= render @comments %>
+      </ol>
+    <% else %>
+      <h3>コメントはまだありません</h3>
+    <% end %>
+  </div>
+</div>
