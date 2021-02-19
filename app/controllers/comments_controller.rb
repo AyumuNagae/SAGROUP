@@ -4,30 +4,29 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
-    @comment.image.attach(params[:comment][:image])
     if @comment.save
       flash[:success] = "コメントしました"
-      redirect_to ##########
+      redirect_to micropost
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
-      render '############'
+      render 'microposts/show'
     end
   end
 
   def destroy
     @comment.destroy
     flash[:success] = "コメントを削除しました"
-    redirect_to request.referrer || ######root_url##########
+    redirect_to request.referrer || micropost
   end
 
   private
 
     def comment_params
-      params.require(:comment).permit(:content, :image, :user_id, :micropost_id)
+      params.require(:comment).permit(:content, :user_id, :micropost_id)
     end
 
     def correct_user
       @comment = current_user.comments.find_by(id: params[:id])
-      redirect_to ###########root_url if @comment.nil?
+      redirect_to root_url if @comment.nil?
     end
 end

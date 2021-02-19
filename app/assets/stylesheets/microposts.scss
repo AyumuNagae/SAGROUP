@@ -1,3 +1,40 @@
-// Place all the styles related to the Microposts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.micropost{
+  .content {
+   display: block;
+   img {
+     display: block;
+     padding: 5px auto;
+     margin-left:50px;
+     width:300px;
+   }
+   ul {
+   display:block;
+   float: left;
+   list-style: none;
+   }
+   .micropost-title{
+       color:#151e19;
+       font-size:28px;
+       border-bottom:1px solid #ffcc00;
+       padding:10px 0 10px 0;
+       margin-bottom:10px;
+   }
+   .micropost-explain{
+       color:#636561;
+       font-size:14px;
+       line-height: 17px;
+       letter-spacing:3px;
+       text-align:left;
+       padding:2px;
+       font-family:serif;
+   }
+ }
+}
+.brands{
+   img {
+     display: block;
+     padding: 5px auto;
+     margin-left:80px;
+     width:25%;
+   }
+}

@@ -1,13 +1,13 @@
 <% provide(:title, @micropost.title) %>
 <div class="row">
   <aside class="col-md-4">
-    <div class="brand">
+    <div class="micropost">
       <div class="content">
           <%= image_tag @micropost.image if @micropost.image.attached? %>
           <ul>
-            <li  class="micropost-title">タイトル:<%= @micropost.title %></li>
-            <li  class="micropost-category">カテゴリ-<%= @micropost.game_category %></li>
-            <li class="brand-explain"><%= @micropost.content %></li>
+            <li  class="micropost-title"><%= @micropost.title %></li>
+            <li  class="micropost-explain"><%= @micropost.game_category %></li>
+            <li class="micropost-explain"><%= @micropost.content %></li>
             <section class="comment_form">
              <%= render 'shared/comment_form' %>
             </section>
