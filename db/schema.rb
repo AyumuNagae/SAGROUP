@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_022101) do
+ActiveRecord::Schema.define(version: 2021_02_19_062801) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -34,28 +34,22 @@ ActiveRecord::Schema.define(version: 2021_02_18_022101) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "name"
-    t.string "category"
-    t.text "explain"
-    t.string "image_name"
-    t.integer "comment_id"
+    t.text "content"
+    t.string "image"
     t.string "title"
+    t.integer "user_id", null: false
+    t.integer "micropost_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "keijibans", force: :cascade do |t|
-    t.string "name"
-    t.string "category"
-    t.text "explain"
-    t.string "image_name"
-    t.integer "keijiban_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["micropost_id"], name: "index_comments_on_micropost_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "microposts", force: :cascade do |t|
+    t.string "title"
     t.text "content"
+    t.string "game_category"
+    t.string "image"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -90,5 +84,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_022101) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "microposts"
+  add_foreign_key "comments", "users"
   add_foreign_key "microposts", "users"
 end

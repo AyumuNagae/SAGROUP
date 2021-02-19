@@ -3,8 +3,8 @@ class MicropostsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def show
-    @post = Post.find(params[:id])
-    @comments = @post.comments
+    @micropost = Micropost.find(params[:id])
+    @comments = @micropost.comments
     @comments=@micropost.comments.paginate(page: params[:page])
     @comment = Comment.new
   end
@@ -12,8 +12,8 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     @micropost.image.attach(params[:micropost][:image])
-    if @micropost.save
-      flash[:success] = "Micropost created!"
+    if @micropost.save!
+      flash[:success] = "投稿しました"
       redirect_to root_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
@@ -23,14 +23,14 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    flash[:success] = "Micropost deleted"
+    flash[:success] = "投稿を削除しました"
     redirect_to request.referrer || root_url
   end
 
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :image)
+      params.require(:micropost).permit(:content, :image, :title, :game_category, :micropost_id, :user_id)
     end
 
     def correct_user

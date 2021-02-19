@@ -1,6 +1,6 @@
 # ユーザー
-User.create!(name:  "AdminUser",
-    email: "admin@railstutorial.org",
+User.create!(name:  "長江歩夢",
+    email: "ayumu100811@rails.com",
     password:              "foobar",
     password_confirmation: "foobar",
     admin:     true,
@@ -20,7 +20,7 @@ User.create!(name:  "AdminUser",
 end
 
 
-User.create!(name:  "GuestUser",
+User.create!(name:  "ゲストユーザー",
   email: "guest-user@example.com",
   password:              "foobar",
   password_confirmation: "foobar",
@@ -31,8 +31,12 @@ User.create!(name:  "GuestUser",
 users = User.order(:created_at).take(6)
 50.times do
   content = Faker::Lorem.sentence(word_count: 5)
-  users.each { |user| user.microposts.create!(content: content) }
+  title = Faker::Lorem.sentence(word_count: 5)
+  game_category = Faker::Lorem.sentence(word_count: 5)
+  users.each { |user| user.microposts.create!(content: content, title: title, game_category: game_category) }
 end
+
+
 
 # 以下のリレーションシップを作成する
 users = User.all
