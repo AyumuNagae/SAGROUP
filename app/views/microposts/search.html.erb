@@ -1,0 +1,19 @@
+<h1>ゲーム名から検索する</h1>
+<%= form_with url: search_microposts_path, method: :get, local: true do |f| %>
+  <%= f.text_field :game_category %>
+  <%= f.submit :search %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>ゲーム名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @microposts.each do |micropost| %>
+      <tr>
+        <td><%= micropost.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

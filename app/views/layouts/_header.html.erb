@@ -7,10 +7,10 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         
-        <li><%= link_to "", help_path, class:"orange-btn" %></li>
+        <li><%= link_to "検索", search_microposts_path, class:"orange-btn" %></li>
         <% if logged_in? %>
-          <li><%= link_to "掲示板", root_path, class:"orange-btn" %></li>
-          <li><%= link_to "", users_path, class:"orange-btn" %></li>
+          <li><%= link_to "投稿", root_path, class:"orange-btn" %></li>
+          <li><%= link_to "ユーザー", users_path, class:"orange-btn" %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span style="color:white;"><%= current_user.name %></span><b class="caret orange-btn"></b>

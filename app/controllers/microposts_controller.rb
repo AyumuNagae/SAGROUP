@@ -27,6 +27,14 @@ class MicropostsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
+  def search
+    if params[:game_category].present?
+      @microposts = Micropost.where('game_category LIKE ?', "%#{params[:game_category]}%")
+    else
+      @microposts = Micropost.none
+    end
+  end
+
   private
 
     def micropost_params
