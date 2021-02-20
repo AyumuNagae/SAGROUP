@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def create
+    @micropost = Micropost.find(params[:micropost_id])
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = "コメントしました"
@@ -14,6 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @micropost = Micropost.find(params[:micropost_id])
     @comment.destroy
     flash[:success] = "コメントを削除しました"
     redirect_to request.referrer || micropost

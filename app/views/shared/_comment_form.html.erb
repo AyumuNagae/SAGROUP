@@ -1,12 +1,9 @@
-<%= form_with(model: @comment, local: true) do |f| %>
+<%= form_with(model:[@micropost, @comment], local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <p>コメントする</p>
     <%= f.text_area :content, placeholder: "コメントを入力してください…" %>
   </div>
-  <span class="image">
-    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
-  </span>
   <%= f.submit "コメントする", class: "btn btn-primary" %>
   
 <% end %>
