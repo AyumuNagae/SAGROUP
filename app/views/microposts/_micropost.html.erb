@@ -1,8 +1,8 @@
 <li id="micropost-<%= micropost.id %>">
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user  %>
   <span class="content">
-    <p><%= link_to micropost.title, micropost %></p>
     <p><%= micropost.game_category %></p>
+    <p><%= link_to micropost.title, micropost %></p>
     <p><%= micropost.content %></p>
     <%= image_tag micropost.display_image if micropost.image.attached? %>
   </span>
