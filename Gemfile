@@ -22,6 +22,7 @@ gem 'bootsnap',   '1.4.5', require: false
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'pry-rails'
+gem 'kaminari'
 
 group :development, :test do
   gem 'sqlite3', '1.4.1'

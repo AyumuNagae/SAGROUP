@@ -25,5 +25,12 @@
       <%= link_to "今すぐはじめる", signup_path, class: "btn-circle" %>
     </div>
   </div>
+  <div class="center kanji mb-15">
+    <h1>掲示板の最新投稿</h1>
+  </div>
+  <ul class="microposts">
+    <%= render @microposts %>
+    <%= will_paginate @microposts, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+  </ul>
 
 <% end %>

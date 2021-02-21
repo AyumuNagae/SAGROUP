@@ -4,11 +4,10 @@ class CommentsController < ApplicationController
 
   def create
     @micropost = Micropost.find(params[:micropost_id])
-    @comment = @post.current_user.comments.build(comment_params)
-    binding.pry
+    @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = "コメントしました"
-      redirect_to root_url
+      redirect_to "/microposts/#{@micropost.id}"
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
       render 'microposts/show'
@@ -25,7 +24,7 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:content, :user_id, :micropost_id)
+      params.require(:comment).permit(:content, :user_id, :micropost_id).merge(user_id: current_user.id, micropost_id: params[:micropost_id])
     end
 
     def correct_user
