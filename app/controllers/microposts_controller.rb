@@ -29,9 +29,9 @@ class MicropostsController < ApplicationController
 
   def search
     if params[:game_category].present?
-      @microposts = Micropost.where('game_category LIKE ?', "%#{params[:game_category]}%")
+      @microposts = Micropost.where('game_category LIKE ?', "%#{params[:game_category]}%").paginate(page: params[:page])
     else
-      @microposts = Micropost.none
+      @microposts = Micropost.all.paginate(page: params[:page])
     end
   end
 
