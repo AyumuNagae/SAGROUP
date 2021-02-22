@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'rooms/create'
+  get 'rooms/show'
+  get 'messages/create'
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
@@ -22,4 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :relationships,       only: [:create, :destroy]
+  
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create,:show]
 end
