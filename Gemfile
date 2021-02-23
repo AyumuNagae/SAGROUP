@@ -24,6 +24,7 @@ gem 'omniauth-twitter'
 gem 'pry-rails'
 gem 'kaminari'
 gem 'gimei'
+gem 'ransack'
 
 group :development, :test do
   gem 'sqlite3', '1.4.1'

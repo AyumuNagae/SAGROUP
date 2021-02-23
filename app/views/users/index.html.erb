@@ -1,10 +1,24 @@
-<% provide(:title, 'All users') %>
+<% provide(:title, 'ユーザー一覧') %>
 <h1>ユーザー一覧</h1>
+
+<div class="row">
+  <div class="search_form">
+    <%= render 'users/search_form' %>
+  </div>
+</div>
 
 <%= will_paginate %>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+<% unless @users.empty? %>
+  <ul class="users">
+    <%= render @users %>
+  </ul>
+<% else %>
+  <p>
+    ユーザーが見つかりませんでした。<br>
+    〇〇を含む文字列を検索します。<br>
+    文字数を少なくしてみてください。
+  </p>
+<% end %>
 
 <%= will_paginate %>

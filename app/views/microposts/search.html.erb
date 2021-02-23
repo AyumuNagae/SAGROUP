@@ -2,10 +2,16 @@
   <div class="col-md-12">
     <div class="container-fluid center">
       <h1>ゲーム名から検索する</h1>
+      <div class="search_form">
       <%= form_with url: search_microposts_path, method: :get, local: true do |f| %>
-        <%= f.text_field :game_category, placeholder: "ゲーム名を入力してください… (〇〇を含むゲーム名を検索)" %>
-        <%= f.submit "検索する", class: "btn btn-primary mb-5 shita" %>
+        <div class="input-group">
+          <%= f.text_field :game_category, placeholder: "ゲーム名を入力してください…" , class: 'form-control' %>
+          <span class="input-group-btn">
+            <%= f.submit "検索", class: "btn btn-primary mb-5 shita" %>
+          </span>
+        </div>
       <% end %>
+      </div>
     </div>
   </div>
 </div>
