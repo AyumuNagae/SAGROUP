@@ -8,7 +8,9 @@ User.create!(name:  "長江歩夢",
     activated_at: Time.zone.now)
 
 99.times do |n|
-  name  = Faker::Name.name
+  gimei = Gimei.new
+
+  name  = gimei.name.hiragana
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(name:  name,
