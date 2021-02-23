@@ -1,12 +1,10 @@
-<li <%= "class = my-content" if message.from_id == current_user.id %>>
-    <%= gravatar_for message.from, size: 50 %>
-    <div class="content">
-        <span class="message">
-            <%= message.content %>
-        </span>
-
-        <span class="timestamp">
-            <%= message.created_at %>
-        </span>
-    </div>
+<li id="message-<%= message.id %>">
+  <%= link_to gravatar_for(message.user, size: 50), message.user  %>
+  <span class="content">
+    <p><%= message.content %></p>
+  </span>
+  <span class="user"><%= link_to message.user.name, message.user %></span>
+  <span class="timestamp">Sent <%= time_ago_in_words(message.created_at) %> ago.
+    
+  </span>
 </li>

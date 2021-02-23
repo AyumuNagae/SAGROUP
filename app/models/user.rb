@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :rooms, through: :entries, source: :room
   
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
