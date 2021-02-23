@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :likes
     end
   end
   resources :users
@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   
   resources :messages, only: [:create]
   resources :rooms, only: [:create,:show]
+  resources :favorite_relationships, only: [:create, :destroy]
 end

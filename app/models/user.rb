@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries, source: :room
+
+  has_many :favorite_relationships, dependent: :destroy
+  has_many :likes, through: :favorite_relationships, source: :micropost
+
   
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
@@ -106,6 +110,26 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+
+  # マイクロポストをライクする
+  def like(micropost)
+    likes << micropost
+  end
+
+  # マイクロポストをライク解除する
+  def unlike(micropost)
+    favorite_relationships.find_by(micropost_id: micropost.id).destroy
+  end
+
+  # 現在のユーザーがライクしていたらtrueを返す
+  def likes?(micropost)
+    likes.include?(micropost)
+  end
+
+
+
+
 
   private
 
