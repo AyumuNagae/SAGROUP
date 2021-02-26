@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_081820) do
+ActiveRecord::Schema.define(version: 2021_02_22_043735) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -51,25 +51,6 @@ ActiveRecord::Schema.define(version: 2021_02_23_081820) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_entries_on_room_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
-  end
-
-  create_table "favorite_relationships", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "micropost_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["micropost_id"], name: "index_favorite_relationships_on_micropost_id"
-    t.index ["user_id"], name: "index_favorite_relationships_on_user_id"
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "room_id", null: false
-    t.text "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_messages_on_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "microposts", force: :cascade do |t|
@@ -124,10 +105,6 @@ ActiveRecord::Schema.define(version: 2021_02_23_081820) do
   add_foreign_key "comments", "users"
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
-  add_foreign_key "favorite_relationships", "microposts"
-  add_foreign_key "favorite_relationships", "users"
-  add_foreign_key "messages", "rooms"
-  add_foreign_key "messages", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "rooms", "users"
 end
