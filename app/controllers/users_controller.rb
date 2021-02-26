@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.send_activation_email
       flash[:info] = "アカウントを有効化するためにEmailを確認してください"
       redirect_to root_url
     else
