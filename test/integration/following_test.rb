@@ -55,5 +55,5 @@ class FollowingTest < ActionDispatch::IntegrationTest
   end
 end
 
- test "a" do
+ test "間違えてmasterブランチの中身全部消して復活できない状態にしてしまった、ショック" do
  end
