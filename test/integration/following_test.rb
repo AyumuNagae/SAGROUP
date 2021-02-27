@@ -54,3 +54,6 @@ class FollowingTest < ActionDispatch::IntegrationTest
     end
   end
 end
+
+ test "a" do
+ end
